@@ -60,13 +60,33 @@ $superheroes = [
       "name" => "Wanda Maximoff",
       "alias" => "Scarlett Witch",
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
-  ], 
+  ],  
 ];
 
-?>
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
+   // echo "<script> console.log(\" ". $_GET['query'] . "\"); </script>";
+   $flag = false;
+    $sub= filter_var($_GET["query"], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    if (strlen($sub) !== 0){
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+        foreach($superheroes as $monique){
+            if ( ($monique['name']=== $sub) or ($monique['alias']===$sub)){
+                echo "<h3>" . $monique["alias"] . "</h3><h4> A.K.A. " . $monique["name"] . "</h4><br>" . $monique["biography"];
+                $flag = true;
+                break;
+            } 
+        }
+        if (!$flag){
+            echo "Superhero not found";
+        }
+        
+    } else {
+    echo "<ul>";
+    foreach ($superheroes as $superhero){
+        echo "<li>". $superhero["alias"] . "</li>";
+    }
+    echo "</ul>";
+    }
+}
+ 
+?>

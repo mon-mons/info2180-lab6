@@ -1,0 +1,44 @@
+body{
+
+    background-color: rgba(253, 243, 243, 0.918);
+}
+
+.container{
+    display: grid;
+    grid-template-rows: 155px auto
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row-start: 1;
+    font-family:sans-serif;
+    background-color: #0ef3e0;
+    color: white;
+}
+
+.subcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row-start: 2;
+}
+
+.content{
+    width: 450px;
+}
+
+#search{
+    color:white;
+    background-color: red;
+    border-color: black;
+    border-radius: 5px;
+    width: 75px;
+    height: 25px;
+}
+
+input {
+    width: 350px;
+    height: 20px;
+}
